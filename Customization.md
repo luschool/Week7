@@ -1,4 +1,4 @@
-# ** Bootable USB Customization Documentation **
+# Bootable USB Customization Documentation
 
 I havn't done a ton of customization yet other than installing a few programs
 that I enjoy using and setting it up to my preferences. 
