@@ -1,0 +1,44 @@
+[luschool@archlin system]$ systemctl start echo.socket
+[luschool@archlin system]$ systemctl status echo.socket
+● echo.socket - echo socket
+   Loaded: loaded (/etc/systemd/system/echo.socket; static; vendor preset: disabled)
+   Active: active (listening) since Tue 2018-02-27 22:41:26 CST; 14s ago
+   Listen: [::]:22222 (Stream)
+ Accepted: 0; Connected: 0
+    Tasks: 0 (limit: 4915)
+   CGroup: /system.slice/echo.socket
+
+Feb 27 22:41:26 archlin systemd[1]: Listening on echo socket.
+[luschool@archlin system]$ telnet localhost 22222
+Trying 127.0.0.1...
+Connected to localhost.
+Escape character is '^]'.
+this is a test for my listening socket and service
+this is a test for my listening socket and service
+it is working as intended
+it is working as intended
+^]
+telnet>                                                                                                                     
+Connection closed.                                                                                                          
+[luschool@archlin system]$ systemctl status echo.socket                                                                     
+● echo.socket - echo socket
+   Loaded: loaded (/etc/systemd/system/echo.socket; static; vendor preset: disabled)
+   Active: active (listening) since Tue 2018-02-27 22:41:26 CST; 58s ago
+   Listen: [::]:22222 (Stream)
+ Accepted: 1; Connected: 0
+    Tasks: 0 (limit: 4915)
+   CGroup: /system.slice/echo.socket
+
+Feb 27 22:41:26 archlin systemd[1]: Listening on echo socket.
+[luschool@archlin system]$ systemctl disable echo.socket
+[luschool@archlin system]$ systemctl stop echo.socket
+[luschool@archlin system]$ systemctl status echo.socket
+● echo.socket - echo socket
+   Loaded: loaded (/etc/systemd/system/echo.socket; static; vendor preset: disabled)
+   Active: inactive (dead)
+   Listen: [::]:22222 (Stream)
+ Accepted: 0; Connected: 0
+
+Feb 27 22:41:26 archlin systemd[1]: Listening on echo socket.
+Feb 27 22:43:01 archlin systemd[1]: Closed echo socket.
+[luschool@archlin system]$ 
